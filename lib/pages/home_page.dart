@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/widgets/navBar.dart';
@@ -25,50 +27,56 @@ class HomePage extends StatelessWidget {
       appBar: appBar(),
       body: Column(
         children: [
-          BannerCarousel(
-            margin: EdgeInsets.symmetric(horizontal: 0.0),
-            height: 160,
-            activeColor: Colors.white,
-            disableColor: Colors.grey,
-            indicatorBottom: false,
-            banners: listBanners,
-          ),
+        
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              children: [
+                 BannerCarousel(
+                    margin: EdgeInsets.symmetric(horizontal: 0),
+                    banners: listBanners,
+                    customizedIndicators: IndicatorModel.animation(
+                        width: 20,
+                        height: 5,
+                        spaceBetween: 2,
+                        widthAnimation: 50),
+                    height: 200,
+                    width: 450,
+                    activeColor: Colors.amberAccent,
+                    disableColor: Colors.white,
+                    animation: true,
+                    borderRadius: 10,
+                    indicatorBottom: false),
           const SizedBox(
             height: 15,
           ),
-          Expanded(
-            child: Container(
-              // height: MediaQuery.of(context).size.height * 0.80,
 
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  rowText(text: 'Best of Month'),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  workers(),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  rowText(text: 'Latest'),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  workers(),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  rowText(text: 'Featured'),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  workers(),
-                ],
-              ),
+
+                rowText(text: 'Best of Month'),
+                const SizedBox(
+                  height: 10,
+                ),
+                workers(),
+                const SizedBox(
+                  height: 15,
+                ),
+                rowText(text: 'Latest'),
+                const SizedBox(
+                  height: 15,
+                ),
+                workers(),
+                const SizedBox(
+                  height: 15,
+                ),
+                rowText(text: 'Featured'),
+                const SizedBox(
+                  height: 15,
+                ),
+                workers(),
+              ],
             ),
           ),
-          navBar(i: i)
+          navBar()
         ],
       ),
     );

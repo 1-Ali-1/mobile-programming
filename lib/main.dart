@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    const MaterialApp(title: 'Flutter assignment',
       home: Main(),
       debugShowCheckedModeBanner: false,
     ),
@@ -23,3 +23,4 @@ class Main extends StatelessWidget {
     );
   }
 }
+

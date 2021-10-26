@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 Container workers() {
@@ -38,15 +40,24 @@ Container workers() {
                     children: const [
                       Text(
                         'هیمن کامەران هیوا',
-                        style: TextStyle(color: Colors.black87, fontSize: 12),
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontFamily: 'Kurdish'),
                       ),
                       Text(
                         'ژمارەی مۆبایل: ٠٧٥٠٢٨٠٤٣٦٩',
-                        style: TextStyle(color: Colors.black87, fontSize: 12),
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 11,
+                            fontFamily: 'Kurdish'),
                       ),
                       Text(
                         'پیشە:جامچی',
-                        style: TextStyle(color: Colors.black87, fontSize: 12),
+                        style: TextStyle(
+                            color: Colors.black87,
+                            fontSize: 12,
+                            fontFamily: 'Kurdish'),
                       ),
                     ],
                   ),

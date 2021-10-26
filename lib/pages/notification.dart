@@ -27,10 +27,11 @@ class Notifi extends StatelessWidget {
                 // height: MediaQuery.of(context).size.height * 0.80,
 
                 child: Center(
-              child: Text('Notification'),
+              child: Text('Notification',
+                style: TextStyle(fontSize: 30)),
             )),
           ),
-        navBar(i: i)
+        navBar()
         ],
       ),
     );

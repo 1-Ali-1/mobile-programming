@@ -8,10 +8,10 @@ import 'package:provider/provider.dart';
 class navBar extends StatelessWidget {
   const navBar({
     Key? key,
-    required this.i,
+    
   }) : super(key: key);
 
-  final int i;
+
 
   @override
   Widget build(BuildContext context) {

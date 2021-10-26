@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
             Icons.search,
             size: 30,
           ),
-        )
+        ),
       ],
       backgroundColor: Colors.teal[900],
       shape: const RoundedRectangleBorder(

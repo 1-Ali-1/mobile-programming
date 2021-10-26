@@ -27,10 +27,11 @@ class NearBy extends StatelessWidget {
                 // height: MediaQuery.of(context).size.height * 0.80,
 
                 child: Center(
-              child: Text('NearBy'),
+              child: Text('NearBy',
+                style: TextStyle(fontSize: 30)),
             )),
           ),
-          navBar(i: i)
+          navBar()
         ],
       ),
     );
