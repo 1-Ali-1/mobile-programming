@@ -49,9 +49,9 @@ class ButtonNavBar extends StatelessWidget {
                                 child: Container(
                                   height: 40,
                                   width: 40,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Colors.teal[900],
+                                    color: Color.fromRGBO(26, 70, 81,1),
                                   ),
                                 ),
                               )

@@ -2,11 +2,12 @@
 
 import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/mock_data.dart';
 import 'package:flutter_assignment/widgets/navBar.dart';
 import 'package:flutter_assignment/widgets/app_bar.dart';
 import 'package:flutter_assignment/provider.dart';
 import 'package:flutter_assignment/widgets/row_text.dart';
-import 'package:flutter_assignment/widgets/worker.dart';
+import 'package:flutter_assignment/widgets/list_of_worker.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,16 +25,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
+      extendBodyBehindAppBar: true,
       appBar: appBar(),
       body: Column(
         children: [
-        
           Expanded(
             child: ListView(
               scrollDirection: Axis.vertical,
               children: [
-                 BannerCarousel(
-                    margin: EdgeInsets.symmetric(horizontal: 0),
+                BannerCarousel(
+                    margin: EdgeInsets.symmetric(horizontal: 15),
                     banners: listBanners,
                     customizedIndicators: IndicatorModel.animation(
                         width: 20,
@@ -47,16 +49,14 @@ class HomePage extends StatelessWidget {
                     animation: true,
                     borderRadius: 10,
                     indicatorBottom: false),
-          const SizedBox(
-            height: 15,
-          ),
-
-
+                const SizedBox(
+                  height: 15,
+                ),
                 rowText(text: 'Best of Month'),
                 const SizedBox(
                   height: 10,
                 ),
-                workers(),
+                HorizantalList(worker: bestOfMonth),
                 const SizedBox(
                   height: 15,
                 ),
@@ -64,7 +64,9 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                workers(),
+                HorizantalList(
+                  worker: latest,
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -72,7 +74,9 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 15,
                 ),
-                workers(),
+                HorizantalList(
+                  worker: featured,
+                ),
               ],
             ),
           ),

@@ -8,21 +8,15 @@ import 'package:provider/provider.dart';
 class navBar extends StatelessWidget {
   const navBar({
     Key? key,
-    
   }) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 60,
       decoration: BoxDecoration(
-        color: Colors.teal[900],
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+        color:Color.fromRGBO(26, 70, 81,1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

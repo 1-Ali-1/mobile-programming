@@ -18,7 +18,7 @@ class Notifi extends StatelessWidget {
   Widget build(BuildContext context) {
     int i = Provider.of<ChangingIndex>(context).index;
 
-    return Scaffold(
+    return Scaffold(extendBodyBehindAppBar: true,
       appBar: appBar(),
       body: Column(
         children: [
