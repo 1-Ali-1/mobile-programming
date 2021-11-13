@@ -3,6 +3,7 @@
 import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_assignment/mock_data.dart';
+import 'package:flutter_assignment/widgets/drawer.dart';
 import 'package:flutter_assignment/widgets/navBar.dart';
 import 'package:flutter_assignment/widgets/app_bar.dart';
 import 'package:flutter_assignment/provider.dart';
@@ -25,9 +26,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideDrawer(),
       backgroundColor: Colors.grey[200],
       extendBodyBehindAppBar: true,
-      appBar: appBar(),
+      appBar: appBar(context),
       body: Column(
         children: [
           Expanded(

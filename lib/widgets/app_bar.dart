@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-AppBar appBar() {
-  return AppBar( 
-    leading: const Icon(
-      Icons.menu,
-      size: 30,
-    ),
+AppBar appBar(context) {
+  return AppBar(
+    leading: Builder(builder: (context) {
+      return InkWell(
+        onTap: () {
+          Scaffold.of(context).openDrawer();
+        },
+        child: const Icon(
+          Icons.menu,
+          size: 30,
+        ),
+      );
+    }),
     centerTitle: true,
     title: const Icon(
       Icons.location_on,
@@ -20,7 +27,7 @@ AppBar appBar() {
         ),
       ),
     ],
-    backgroundColor:Color.fromRGBO(26, 70, 81,1),
+    backgroundColor: Color.fromRGBO(26, 70, 81, 1),
     shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(25.0),

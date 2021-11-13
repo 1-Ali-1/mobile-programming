@@ -5,6 +5,7 @@ List<Map<String, String>> bestOfMonth = [
     "occupation": 'پیشە:جامچی',
     "image": 'assets/imgs/dude.webp'
   },
+  
   {
     "name": 'فاتیمە هیوا',
     "mobile number": 'ژمارەی مۆبایل: ٠٧٥٠٥٨٠٤٠٦٩',
