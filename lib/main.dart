@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assignment/choosing_Class.dart';
+import 'package:flutter_assignment/pages/home_page.dart';
 import 'package:flutter_assignment/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -18,12 +18,7 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(
-        'the hight of the device :     ${MediaQuery.of(context).size.height}');
-    print(
-        ' the hight of the device :      ${MediaQuery.of(context).size.width} ');
-
     return ChangeNotifierProvider<ChangingIndex>(
-        create: (context) => ChangingIndex(), child: const ChoosingClass());
+        create: (context) => ChangingIndex(), child: HomePage());
   }
 }

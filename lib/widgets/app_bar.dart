@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/provider.dart';
+import 'package:provider/provider.dart';
 
 AppBar appBar(context) {
   return AppBar(
@@ -7,9 +9,19 @@ AppBar appBar(context) {
         onTap: () {
           Scaffold.of(context).openDrawer();
         },
-        child: const Icon(
-          Icons.menu,
-          size: 30,
+        child: GestureDetector(
+          onTap: () {
+            if(Provider.of<ChangingIndex>(context, listen: false).drawerIsOpen == 1){
+ Provider.of<ChangingIndex>(context, listen: false).changeDrawer(1);
+            }else{
+ Provider.of<ChangingIndex>(context, listen: false).changeDrawer(2);
+            }
+           
+          },
+          child: const Icon(
+            Icons.menu,
+            size: 30,
+          ),
         ),
       );
     }),

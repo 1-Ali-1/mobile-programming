@@ -5,31 +5,40 @@ import 'package:flutter/material.dart';
 class SideDrawer extends StatelessWidget {
   const SideDrawer({Key? key}) : super(key: key);
 
+  
+
   @override
   Widget build(BuildContext context) {
-    return Drawer(
+    return Container(
+      color: Colors.green[50],
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            width: double.infinity,
+            width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.35,
             color: Color.fromRGBO(26, 70, 81, 1),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 35,
                 ),
-                CircleAvatar(
-                  radius: 60,
-                  backgroundImage: AssetImage(
-                    'assets/imgs/man.jpg',
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: CircleAvatar(
+                    radius: 60,
+                    backgroundImage: AssetImage(
+                      'assets/imgs/man.jpg',
+                    ),
                   ),
                 ),
                 SizedBox(
                   height: 15,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Text(
                     ' کامەران عةلى',
                     style: TextStyle(
@@ -49,9 +58,9 @@ class SideDrawer extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         'عێراق / هەولێر',
@@ -118,33 +127,42 @@ class SideDrawer extends StatelessWidget {
           ),
           Spacer(),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(
-                backgroundColor: Color.fromRGBO(26, 70, 81, 1),
-                radius: 20,
-                child: FaIcon(
-                  FontAwesomeIcons.facebook,
-                  size: 30,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: CircleAvatar(
+                  backgroundColor: Color.fromRGBO(26, 70, 81, 1),
+                  radius: 20,
+                  child: FaIcon(
+                    FontAwesomeIcons.facebook,
+                    size: 30,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              CircleAvatar(
-                backgroundColor: Color.fromRGBO(26, 70, 81, 1),
-                radius: 20,
-                child: FaIcon(
-                  FontAwesomeIcons.instagram,
-                  size: 30,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: CircleAvatar(
+                  backgroundColor: Color.fromRGBO(26, 70, 81, 1),
+                  radius: 20,
+                  child: FaIcon(
+                    FontAwesomeIcons.instagram,
+                    size: 30,
+                    color: Colors.white,
+                  ),
                 ),
               ),
-              CircleAvatar(
-                backgroundColor: Color.fromRGBO(26, 70, 81, 1),
-                radius: 20,
-                child: FaIcon(
-                  FontAwesomeIcons.snapchat,
-                  size: 30,
-                  color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: CircleAvatar(
+                  backgroundColor: Color.fromRGBO(26, 70, 81, 1),
+                  radius: 20,
+                  child: FaIcon(
+                    FontAwesomeIcons.snapchat,
+                    size: 30,
+                    color: Colors.white,
+                  ),
                 ),
               )
             ],
