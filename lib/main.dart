@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_assignment/choosing_Class.dart';
+import 'package:flutter_assignment/pages/home_page.dart';
 import 'package:flutter_assignment/provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
     const MaterialApp(
+      title: 'Flutter assignment',
       home: Main(),
       debugShowCheckedModeBanner: false,
     ),
@@ -18,8 +19,6 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ChangingIndex>(
-      create: (_) => ChangingIndex(),
-      child: const ChoosingClass(),
-    );
+        create: (context) => ChangingIndex(), child: HomePage());
   }
 }

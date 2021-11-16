@@ -1,11 +1,15 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:banner_carousel/banner_carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assignment/pages/favorite.dart';
+import 'package:flutter_assignment/pages/home.dart';
+import 'package:flutter_assignment/pages/drawer.dart';
 import 'package:flutter_assignment/widgets/navBar.dart';
-import 'package:flutter_assignment/widgets/app_bar.dart';
 import 'package:flutter_assignment/provider.dart';
-import 'package:flutter_assignment/widgets/row_text.dart';
-import 'package:flutter_assignment/widgets/worker.dart';
 import 'package:provider/provider.dart';
+import 'nearBy.dart';
+import 'notification.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -21,56 +25,104 @@ class HomePage extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appBar(),
-      body: Column(
-        children: [
-          BannerCarousel(
-            margin: EdgeInsets.symmetric(horizontal: 0.0),
-            height: 160,
-            activeColor: Colors.white,
-            disableColor: Colors.grey,
-            indicatorBottom: false,
-            banners: listBanners,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Expanded(
-            child: Container(
-              // height: MediaQuery.of(context).size.height * 0.80,
-
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  rowText(text: 'Best of Month'),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  workers(),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  rowText(text: 'Latest'),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  workers(),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  rowText(text: 'Featured'),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  workers(),
-                ],
+    return GestureDetector(
+        onHorizontalDragEnd: (dragEndDetails) {
+          if (dragEndDetails.velocity.pixelsPerSecond.dx > 0) {
+            Provider.of<ChangingIndex>(context, listen: false).changeDrawer(2);
+          } else if (dragEndDetails.velocity.pixelsPerSecond.dx < 0) {
+            Provider.of<ChangingIndex>(context, listen: false).changeDrawer(1);
+          }
+        },
+        child: Scaffold(
+          backgroundColor: Colors.grey[200],
+          extendBodyBehindAppBar: true,
+          body: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              AnimatedOpacity(
+                opacity: Provider.of<ChangingIndex>(context).drawerIsOpen == 2
+                    ? 1
+                    : 0,
+                duration: Duration(milliseconds: 500),
+                child: SideDrawer(),
               ),
-            ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
+                color: Colors.grey[200],
+                transform: Matrix4.translationValues(
+                    Provider.of<ChangingIndex>(context).drawerIsOpen == 2
+                        ? MediaQuery.of(context).size.width / 2 + 35
+                        : 0,
+                    0,
+                    0),
+                child: Column(
+                  children: [
+                    AppBar(
+                      leading: Builder(builder: (context) {
+                        return GestureDetector(
+                          onTap: () {
+                            Scaffold.of(context).openDrawer();
+                          },
+                          child: GestureDetector(
+                            onTap: () {
+                              if (Provider.of<ChangingIndex>(context,
+                                          listen: false)
+                                      .drawerIsOpen ==
+                                  1) {
+                                Provider.of<ChangingIndex>(context,
+                                        listen: false)
+                                    .changeDrawer(2);
+                              } else {
+                                Provider.of<ChangingIndex>(context,
+                                        listen: false)
+                                    .changeDrawer(1);
+                              }
+                            },
+                            child: Icon(
+                              Provider.of<ChangingIndex>(context)
+                                          .drawerIsOpen ==
+                                      2
+                                  ? Icons.arrow_back
+                                  : Icons.menu,
+                              size: 30,
+                            ),
+                          ),
+                        );
+                      }),
+                      centerTitle: true,
+                      title: const Icon(
+                        Icons.location_on,
+                        size: 30,
+                      ),
+                      actions: const [
+                        Padding(
+                          padding: EdgeInsets.only(right: 8.0),
+                          child: Icon(
+                            Icons.search,
+                            size: 30,
+                          ),
+                        ),
+                      ],
+                      backgroundColor: Color.fromRGBO(26, 70, 81, 1),
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(25.0),
+                              bottomRight: Radius.circular(25))),
+                    ),
+                    Expanded(
+                        child: Provider.of<ChangingIndex>(context).index == 1
+                            ? Home()
+                            : Provider.of<ChangingIndex>(context).index == 2
+                                ? Favorite()
+                                : Provider.of<ChangingIndex>(context).index == 3
+                                    ? NearBy()
+                                    : Notifi()),
+                    navBar()
+                  ],
+                ),
+              ),
+            ],
           ),
-          navBar(i: i)
-        ],
-      ),
-    );
+        ));
   }
 }
