@@ -39,10 +39,15 @@ class HomePage extends StatelessWidget {
           body: Stack(
             clipBehavior: Clip.none,
             children: [
-              Provider.of<ChangingIndex>(context).drawerIsOpen == 2
-                  ? SideDrawer()
-                  : Container(),
-              Container(
+              AnimatedOpacity(
+                opacity: Provider.of<ChangingIndex>(context).drawerIsOpen == 2
+                    ? 1
+                    : 0,
+                duration: Duration(milliseconds: 500),
+                child: SideDrawer(),
+              ),
+              AnimatedContainer(
+                duration: Duration(milliseconds: 500),
                 color: Colors.grey[200],
                 transform: Matrix4.translationValues(
                     Provider.of<ChangingIndex>(context).drawerIsOpen == 2

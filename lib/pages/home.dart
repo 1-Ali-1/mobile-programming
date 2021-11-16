@@ -54,7 +54,10 @@ class _HomeState extends State<Home> {
           const SizedBox(
             height: 10,
           ),
-          HorizantalList(worker: bestOfMonth),
+          HorizantalList(
+            worker: bestOfMonth,
+            forHero: 'bestOfMonth',
+          ),
           const SizedBox(
             height: 15,
           ),
@@ -63,6 +66,7 @@ class _HomeState extends State<Home> {
             height: 15,
           ),
           HorizantalList(
+            forHero: 'latest',
             worker: latest,
           ),
           const SizedBox(
@@ -73,6 +77,7 @@ class _HomeState extends State<Home> {
             height: 15,
           ),
           HorizantalList(
+            forHero: 'featured',
             worker: featured,
           ),
         ]);

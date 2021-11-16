@@ -5,20 +5,26 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserView extends StatefulWidget {
   UserView(
-      {Key? key, this.name, this.image, this.phone, this.work, this.iForHero})
+      {Key? key,
+      this.name,
+      this.image,
+      this.phone,
+      this.work,
+      this.iForHero,
+      this.stringForHero})
       : super(key: key);
   String? name;
   String? phone;
   String? work;
   String? image;
   int? iForHero;
+  String? stringForHero;
 
   @override
   State<UserView> createState() => _UserViewState();
 }
 
 class _UserViewState extends State<UserView> {
-  
   int rate = 0;
   List<Widget> stars = [];
   bool fav = false;
@@ -145,9 +151,12 @@ class _UserViewState extends State<UserView> {
                         radius: 64,
                         backgroundColor: Color.fromRGBO(26, 70, 81, 1),
                         child: Container(
-                          child: CircleAvatar(
-                            radius: 60,
-                            backgroundImage: AssetImage(widget.image ?? ''),
+                          child: Hero(
+                            tag: '${widget.stringForHero}${widget.iForHero}',
+                            child: CircleAvatar(
+                              radius: 60,
+                              backgroundImage: AssetImage(widget.image ?? ''),
+                            ),
                           ),
                         )),
                   ),

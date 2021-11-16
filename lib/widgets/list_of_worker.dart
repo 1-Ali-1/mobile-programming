@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assignment/pages/user_view.dart';
 
 class HorizantalList extends StatelessWidget {
-  const HorizantalList({
-    Key? key,
-    required this.worker,
-  }) : super(key: key);
+  HorizantalList({Key? key, required this.worker, required this.forHero})
+      : super(key: key);
 
   final List<Map<String, String>> worker;
+  String forHero;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,6 +28,7 @@ class HorizantalList extends StatelessWidget {
                             name: worker[i]["name"] ?? '',
                             phone: worker[i]["mobile number"] ?? '',
                             iForHero: i,
+                            stringForHero: forHero,
                           )));
                 },
                 child: Column(
@@ -39,9 +39,12 @@ class HorizantalList extends StatelessWidget {
                       child: Container(
                         height: 60,
                         width: 130,
-                        child: Image.asset(
-                          worker[i]["image"] ?? '',
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: '$forHero$i',
+                          child: Image.asset(
+                            worker[i]["image"] ?? '',
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
